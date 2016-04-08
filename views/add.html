@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {{include "./components/include-top"}}
+</head>
+
+<body class="no-skin">
+    <!-- 顶部栏 -->
+    {{include "./components/top-bar"}}
+    <!-- 页面主体 -->
+    <section class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {}
+        </script>
+        <!-- 左边菜单-->
+        {{include "./components/left-menu"}}
+        <!-- 右边主体 -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!-- 面包屑-->
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="/">首页</a>
+                        </li>
+                        <li>
+                            <a href="/api/list">接口列表</a>
+                        </li>
+                        <li class="active">新增API接口</li>
+                    </ul>
+                </div>
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <form action="javascript:;">
+                                <div class="form-group">
+                                    <label>
+                                        <strong>API接口名称</strong>
+                                    </label>
+                                    <input type="text" name="name" placeholder="3-12位英文字符" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <strong>选择API接口请求方式</strong>
+                                        <span class="text-danger">(默认为GET，其它方式请选择)
+                                        </span>
+                                    </label>
+                                    <select name="method" class="form-control">
+                                        <option selected value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <strong>数据规则</strong>
+                                        <span class="text-danger">(请按照<a href="https://github.com/nuysoft/Mock/wiki/Syntax-Specification#1-%E5%B1%9E%E6%80%A7%E5%80%BC%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2-string" target="_blank">Mockjs</a>的语法规范进行填写)
+                                        </span>
+                                    </label>
+                                    <textarea class="form-control" name="rules" style="height: 200px;"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>备注</label>
+                                    <textarea class="form-control" name="sumary"></textarea>
+                                </div>
+                                <button class="btn btn-primary j_save">提交</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{include "./components/include-bottom"}}
+</body>
+
+</html>

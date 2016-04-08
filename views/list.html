@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {{include "./components/include-top"}}
+</head>
+
+<body class="no-skin">
+    <!-- 顶部栏 -->
+    {{include "./components/top-bar"}}
+    <!-- 页面主体 -->
+    <section class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {}
+        </script>
+        <!-- 左边菜单-->
+        {{include "./components/left-menu"}}
+        <!-- 右边主体 -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!-- 面包屑-->
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="/">首页</a>
+                        </li>
+                        <li class="active">接口列表</li>
+                    </ul>
+                </div>
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12"> 
+                            <p>
+                                <a href="/api/add" class="btn btn-white btn-info j_update">
+                                    <i class="glyphicon glyphicon-plus"></i> 新增接口
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table id="simple-table" class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>接口别名</th>
+                                                <th>数据规则</th>
+                                                <th>METHOD</th>
+                                                <th>备注</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{if data.length > 0 }} {{each data as list}}
+                                            <tr>
+                                                <td width="10%">{{list.id}}</td>
+                                                <td width="10%">
+                                                    <a href="/api/show/{{list.name}}" target="_blank">{{list.name}}</a>
+                                                </td>
+                                                <td width="40%">{{list.rules}}</td>
+                                                <td width="10%">{{list.method}}</td>
+                                                <td width="10%">{{list.sumary}}</td>
+                                                <td width="20%">
+                                                    <div class="btn-group">
+                                                        <button data-id="{{list.id}}" data-name={{list.name}} class="btn btn-xs btn-info j_edit">
+                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                        </button>
+                                                        <button data-id="{{list.id}}" data-name={{list.name}} class="btn btn-xs btn-danger j_del">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {{/each}} {{else}}
+                                            <tr>
+                                                <td colspan="6" class="text-center">
+                                                    暂时没有数据
+                                                </td>
+                                            </tr>
+                                            {{/if}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.span -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{include "./components/include-bottom"}}
+</body>
+
+</html>

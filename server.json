@@ -1,0 +1,8 @@
+{
+	"name" : "app",
+	"script" : "app.js",
+	"watch" : true,
+	"exec_mode" : "cluster",
+	"instances" : 4,
+	"max_memory_restart" : "20M"
+}
